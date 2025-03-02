@@ -9,9 +9,9 @@ const Home = () => {
         <Header />
       </div>
 
-      <div className="relative p-4 lg:mt-36 md:mt-28 mt-16">
+      <div className="relative p-4 lg:mt-36 md:mt-36 mt-16">
         <img src={hero} alt="" className="w-full" />
-        <div className="absolute lg:top-36 top-5 lg:right-36 md:right-20 space-y-2 right-10">
+        <div className="absolute lg:top-36 top-5 lg:right-36 space-y-2 right-10">
           <h1 className="text-white text-xl lg:text-5xl">Enjoy up to 50% off <br /> on selected items</h1>
           <p className="lg:block md:block hidden text-white text-3xl">Shop on all your favourite items on Mashop today, <br /> We are the best e-commerce brand and cutomers <br /> satisfaction is our top priority</p>
           <div>
