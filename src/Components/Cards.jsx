@@ -36,8 +36,8 @@ const Cards = () => {
               </div>
 
               <div className="mt-3 text-center">
-                <h1 className="text-lg font-semibold">{card.title}</h1>
-                <p className="text-xl font-bold text-orange-500">{card.price}</p>
+                <h1 className="lg:text-lg font-semibold">{card.title}</h1>
+                <p className="lg:text-xl text-base font-bold text-orange-500">{card.price}</p>
                 <p className="line-through text-gray-400">{card.oldPrice}</p>
               </div>
             </div>
