@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Shirt, ShoppingBag, Filter, Utensils, MonitorSmartphone, ShirtIcon } from "lucide-react";
+import { Shirt, ShoppingBag, Utensils, MonitorSmartphone, ShirtIcon } from "lucide-react";
 import { accessories1, blender, bluepants, cloth, clothes, clothing, girl, hoddie, jacket, kit, kitchen2, kitchenset, laptop2, laptop4, phone, plates, short, smartphone, smartwatch, whiteshirt } from "../assets";
 
 const Items = () => {
