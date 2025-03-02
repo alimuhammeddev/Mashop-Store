@@ -23,10 +23,10 @@ const Cards = () => {
       <div className="relative overflow-hidden mt-5">
         <motion.div
           className="flex space-x-4 w-max"
-          animate={{ x: ["0%", "-100%"] }}
+          animate={{ x: ["0%", "-50%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 10 }}
         >
-          {[...cardsData, ...cardsData].map((card, index) => (
+          {[...cardsData, ...cardsData, ...cardsData].map((card, index) => (
             <div key={index} className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg">
               <div className="relative w-full h-48">
                 <img src={card.img} alt={card.title} className="w-full h-full object-cover rounded-lg" />
