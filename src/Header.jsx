@@ -1,5 +1,6 @@
 import { Search, ShoppingCart, User, Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -70,11 +71,19 @@ export default function Header() {
           menuOpen ? "block" : "hidden"
         } md:block md:relative absolute lg:top-0 md:top-0 top-16 left-0 w-full bg-white md:bg-transparent z-50 p-4 lg:shadow-none md:shadow-none shadow-md`}
       >
-        <ul className="flex flex-col md:flex-row md:justify-center space-y-3 md:space-y-0 md:space-x-6 text-gray-700 font-medium">
-          <li className="cursor-pointer hover:text-blue-500">Home</li>
-          <li className="cursor-pointer hover:text-blue-500">Shop</li>
-          <li className="cursor-pointer hover:text-blue-500">Deals</li>
-          <li className="cursor-pointer hover:text-blue-500">Categories</li>
+        <ul className="flex flex-col md:flex-row md:justify-center space-y-3 md:space-y-0 md:space-x-6 text-gray-900 font-medium">
+          <li className="cursor-pointer hover:text-orange-400 duration-500 ease-out transition">
+            <Link to="/home">Home</Link>
+          </li>
+          <li className="cursor-pointer hover:text-orange-400 duration-500 ease-out transition">
+            <Link to="/shop">Shop</Link>
+          </li>
+          <li className="cursor-pointer hover:text-orange-400 duration-500 ease-out transition">
+            <Link to="/deals">Deals</Link>
+          </li>
+          <li className="cursor-pointer hover:text-orange-400 duration-500 ease-out transition">
+            <Link to="/categories">Categories</Link>
+          </li>
         </ul>
       </nav>
     </header>
