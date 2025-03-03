@@ -31,6 +31,20 @@ import short from './short.jpg';
 import smartphone from './smartphone.jpg';
 import smartwatch from './smartwatch.jpg';
 import whiteshirt from './whiteshirt.jpg';
+import drone from './drone.png';
+import headphone from './headphone.png';
+import headset from './headset.png';
+import keyboard from './keyboard.png';
+import plasma from './plasma.png';
+import printer from './printer.png';
+import samsung from './samsung.png';
+import standingtv from './standingtv.png';
+import tozo from './tozo.png';
+import tv from './tv.png';
+import zfold from './zfold.png';
+import rating1 from './rating1.png';
+import rating2 from './rating2.png';
+import rating3 from './rating3.png';
 
 export {
     hero,
@@ -65,5 +79,19 @@ export {
     short,
     smartphone,
     smartwatch,
-    whiteshirt,    
+    whiteshirt,
+    drone,
+    headphone,
+    headset,
+    keyboard,
+    plasma,
+    printer,
+    samsung,
+    standingtv,
+    tozo,
+    tv,
+    zfold,
+    rating1,
+    rating2,
+    rating3,
 }
