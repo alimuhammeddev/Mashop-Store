@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const cartItemCount = 3; // Example cart item count
+  const notifications = 5; // Example notification count
 
   return (
     <header className="w-full bg-white shadow-md p-4 fixed top-0 left-0 z-50">
@@ -25,8 +27,22 @@ export default function Header() {
             className="h-6 w-6 cursor-pointer text-gray-700 md:hidden"
             onClick={() => setSearchOpen(true)}
           />
-          <ShoppingCart className="h-6 w-6 cursor-pointer text-gray-700" />
-          <User className="h-6 w-6 cursor-pointer text-gray-700" />
+          <div className="relative cursor-pointer">
+            <ShoppingCart className="h-6 w-6 text-gray-700" />
+            {cartItemCount > 0 && (
+              <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                {cartItemCount}
+              </span>
+            )}
+          </div>
+          <div className="relative cursor-pointer">
+            <User className="h-6 w-6 text-gray-700" />
+            {notifications > 0 && (
+              <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                {notifications}
+              </span>
+            )}
+          </div>
           <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (
               <X className="h-6 w-6" />

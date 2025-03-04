@@ -1,6 +1,6 @@
 import { gadget, laptop, phone, woman1 } from "../assets";
 import { motion, useAnimation } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { ShoppingCart, Heart, Eye } from "lucide-react";
 
 const cardsData = [
@@ -14,16 +14,16 @@ const Cards = () => {
   const controls = useAnimation();
   const [isPaused, setIsPaused] = useState(false);
 
-  const startAnimation = () => {
-    controls.start({
-      x: ["0%", "-50%"],
-      transition: { repeat: Infinity, ease: "linear", duration: 10 },
-    });
-  };
-
-  const stopAnimation = async () => {
-    await controls.stop();
-  };
+  useEffect(() => {
+    if (!isPaused) {
+      controls.start({
+        x: ["0%", "-50%"],
+        transition: { repeat: Infinity, ease: "linear", duration: 10 },
+      });
+    } else {
+      controls.stop();
+    }
+  }, [isPaused, controls]);
 
   return (
     <section className="overflow-hidden">
@@ -40,19 +40,13 @@ const Cards = () => {
         <motion.div
           className="flex space-x-4 w-max"
           animate={controls}
-          onMouseEnter={() => {
-            setIsPaused(true);
-            stopAnimation();
-          }}
-          onMouseLeave={() => {
-            setIsPaused(false);
-            startAnimation();
-          }}
         >
           {[...cardsData, ...cardsData, ...cardsData].map((card, index) => (
             <div
               key={index}
               className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg relative group"
+              onMouseEnter={() => setIsPaused(true)}
+              onMouseLeave={() => setIsPaused(false)}
             >
               <div className="relative w-full h-48 overflow-hidden">
                 <img src={card.img} alt={card.title} className="w-full h-full object-cover rounded-lg" />
