@@ -1,5 +1,7 @@
 import { gadget, laptop, phone, woman1 } from "../assets";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
+import { useState } from "react";
+import { ShoppingCart, Heart, Eye } from "lucide-react";
 
 const cardsData = [
   { img: gadget, title: "Complete Set Gadget full set", price: "$21,000", oldPrice: "$50,000", discount: "50% Discount" },
@@ -9,6 +11,20 @@ const cardsData = [
 ];
 
 const Cards = () => {
+  const controls = useAnimation();
+  const [isPaused, setIsPaused] = useState(false);
+
+  const startAnimation = () => {
+    controls.start({
+      x: ["0%", "-50%"],
+      transition: { repeat: Infinity, ease: "linear", duration: 10 },
+    });
+  };
+
+  const stopAnimation = async () => {
+    await controls.stop();
+  };
+
   return (
     <section className="overflow-hidden">
       <div>
@@ -23,15 +39,31 @@ const Cards = () => {
       <div className="relative overflow-hidden mt-5">
         <motion.div
           className="flex space-x-4 w-max"
-          animate={{ x: ["0%", "-50%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 10 }}
+          animate={controls}
+          onMouseEnter={() => {
+            setIsPaused(true);
+            stopAnimation();
+          }}
+          onMouseLeave={() => {
+            setIsPaused(false);
+            startAnimation();
+          }}
         >
           {[...cardsData, ...cardsData, ...cardsData].map((card, index) => (
-            <div key={index} className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg">
-              <div className="relative w-full h-48">
+            <div
+              key={index}
+              className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg relative group"
+            >
+              <div className="relative w-full h-48 overflow-hidden">
                 <img src={card.img} alt={card.title} className="w-full h-full object-cover rounded-lg" />
                 <div className="absolute top-2 left-2 text-white bg-black/50 px-2 py-1 rounded">
                   {card.discount}
+                </div>
+
+                <div className="absolute inset-0 flex items-center justify-center space-x-3 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <ShoppingCart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
+                  <Heart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
+                  <Eye size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
                 </div>
               </div>
 
