@@ -2,6 +2,7 @@ import { gadget, laptop, phone, woman1 } from "../assets";
 import { motion, useAnimation } from "framer-motion";
 import { useState, useEffect } from "react";
 import { ShoppingCart, Heart, Eye } from "lucide-react";
+import ProductPopup from "./ProductPopup";
 
 const cardsData = [
   { img: gadget, title: "Complete Set Gadget full set", price: "$21,000", oldPrice: "$50,000", discount: "50% Discount" },
@@ -13,6 +14,7 @@ const cardsData = [
 const Cards = () => {
   const controls = useAnimation();
   const [isPaused, setIsPaused] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
   useEffect(() => {
     if (!isPaused) {
@@ -57,7 +59,11 @@ const Cards = () => {
                 <div className="absolute inset-0 flex items-center justify-center space-x-3 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   <ShoppingCart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
                   <Heart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
-                  <Eye size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
+                  <Eye
+                    size={40}
+                    className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform"
+                    onClick={() => setSelectedProduct(card)}
+                  />
                 </div>
               </div>
 
@@ -70,6 +76,8 @@ const Cards = () => {
           ))}
         </motion.div>
       </div>
+
+      {selectedProduct && <ProductPopup product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
     </section>
   );
 };
