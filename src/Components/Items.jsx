@@ -62,7 +62,7 @@ const Items = () => {
         </h1>
       </div>
 
-      <div className="grid lg:grid-cols-4 grid-cols-1 gap-4 mt-5">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 mt-5">
         {visibleItems.map((item) => (
           <div key={item.id} className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
             {/* Image Container */}

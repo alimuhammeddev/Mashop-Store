@@ -28,12 +28,14 @@ export default function Header() {
             onClick={() => setSearchOpen(true)}
           />
           <div className="relative cursor-pointer">
-            <ShoppingCart className="h-6 w-6 text-gray-700" />
-            {cartItemCount > 0 && (
-              <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-                {cartItemCount}
-              </span>
-            )}
+            <Link to="/cart" className="relative cursor-pointer">
+              <ShoppingCart className="h-6 w-6 text-gray-700" />
+              {cartItemCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                  {cartItemCount}
+                </span>
+              )}
+            </Link>
           </div>
           <div className="relative cursor-pointer">
             <User className="h-6 w-6 text-gray-700" />
