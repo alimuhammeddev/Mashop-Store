@@ -7,6 +7,7 @@ import Deals from "./Pages/Deals"
 import Categories from "./Pages/Categories"
 import ShoppingCart from "./Pages/ShoppingCart"
 import Checkout from "./Pages/Checkout"
+import Profile from "./Pages/Profile"
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <Route path="/categories" element={<Categories />} />
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/order" element={<Checkout />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </>
   )

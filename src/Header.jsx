@@ -38,12 +38,14 @@ export default function Header() {
             </Link>
           </div>
           <div className="relative cursor-pointer">
-            <User className="h-6 w-6 text-gray-700" />
-            {notifications > 0 && (
-              <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-                {notifications}
-              </span>
-            )}
+            <Link to="/profile" className="relative cursor-pointer">
+              <User className="h-6 w-6 text-gray-700" />
+              {notifications > 0 && (
+                <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
+                  {notifications}
+                </span>
+              )}
+            </Link>
           </div>
           <button className="md:hidden" onClick={() => setMenuOpen(!menuOpen)}>
             {menuOpen ? (
