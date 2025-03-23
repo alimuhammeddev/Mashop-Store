@@ -8,6 +8,7 @@ import Categories from "./Pages/Categories"
 import ShoppingCart from "./Pages/ShoppingCart"
 import Checkout from "./Pages/Checkout"
 import Profile from "./Pages/Profile"
+import OrdersList from "./Components/OrdersList"
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
         <Route path="/cart" element={<ShoppingCart />} />
         <Route path="/order" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/orders" element={<OrdersList />} />
       </Routes>
     </>
   )

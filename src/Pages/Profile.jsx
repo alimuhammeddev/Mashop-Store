@@ -12,6 +12,7 @@ import {
   X,
 } from "lucide-react";
 import Header from "../Header";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   return (
@@ -27,12 +28,14 @@ const Profile = () => {
       <p className="border w-full -mt-2"></p>
 
       <div className="p-4 max-w-xl space-y-5 justify-center mx-auto mt-5">
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <ShoppingBagIcon /> Orders
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
+        <Link to="/orders">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <ShoppingBagIcon /> Orders
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
         <div className="flex items-center justify-between">
           <h1 className="flex items-center gap-2">
             <MessageCircle /> Inbox
