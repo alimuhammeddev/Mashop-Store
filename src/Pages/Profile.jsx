@@ -26,7 +26,7 @@ const Profile = () => {
       </div>
       <p className="border w-full -mt-2"></p>
 
-      <div className="p-4 max-w-xl space-y-5">
+      <div className="p-4 max-w-xl space-y-5 justify-center mx-auto mt-5">
         <div className="flex items-center justify-between">
           <h1 className="flex items-center gap-2">
             <ShoppingBagIcon /> Orders
