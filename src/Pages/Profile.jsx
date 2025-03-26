@@ -27,7 +27,7 @@ const Profile = () => {
       </div>
       <p className="border w-full -mt-2"></p>
 
-      <div className="p-4 max-w-xl space-y-5 justify-center mx-auto mt-5">
+      <div className="p-4 max-w-xl space-x-5 justify-center mx-auto mt-5">
         <Link to="/orders">
           <div className="flex items-center justify-between">
             <h1 className="flex items-center gap-2">
@@ -36,54 +36,70 @@ const Profile = () => {
             <ChevronRight className="text-orange-400" />
           </div>
         </Link>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <MessageCircle /> Inbox
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <Star /> Ratings and Review
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <BookIcon /> Address Book
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <CreditCard /> Payment Methods
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <GiftIcon /> Vouchers
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <Timer /> Recently Viewed
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <PersonStandingIcon /> Account Settings
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
-        <div className="flex items-center justify-between">
-          <h1 className="flex items-center gap-2">
-            <X /> Close Account
-          </h1>{" "}
-          <ChevronRight className="text-orange-400" />
-        </div>
+        <Link to="/inbox">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <MessageCircle /> Inbox
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/review">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <Star /> Ratings and Review
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/address">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <BookIcon /> Address Book
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/payment">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <CreditCard /> Payment Methods
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/vouchers">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <GiftIcon /> Vouchers
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/recently-viewed">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <Timer /> Recently Viewed
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/account-settings">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <PersonStandingIcon /> Account Settings
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
+        <Link to="/close-account">
+          <div className="flex items-center justify-between">
+            <h1 className="flex items-center gap-2">
+              <X /> Close Account
+            </h1>{" "}
+            <ChevronRight className="text-orange-400" />
+          </div>
+        </Link>
       </div>
       <div className=" bg-orange-400 text-white p-2 text-center w-fit justify-center mx-auto rounded-md">
         <button className="flex items-center gap-1">

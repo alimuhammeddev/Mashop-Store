@@ -9,6 +9,13 @@ import ShoppingCart from "./Pages/ShoppingCart"
 import Checkout from "./Pages/Checkout"
 import Profile from "./Pages/Profile"
 import OrdersList from "./Components/OrdersList"
+import Inbox from "./Components/Inbox"
+import Review from "./Components/Review"
+import Address from "./Components/Address"
+import PaymentMethod from "./Components/PaymentMethod"
+import Vouchers from "./Components/Vouchers"
+import RecentlyViewed from "./Components/RecentlyViewed"
+import AccountSettings from "./Components/AccountSettings"
 
 const App = () => {
   return (
@@ -24,6 +31,13 @@ const App = () => {
         <Route path="/order" element={<Checkout />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/orders" element={<OrdersList />} />
+        <Route path="/inbox" element={<Inbox />} />
+        <Route path="/review" element={<Review />} />
+        <Route path="/address" element={<Address />} />
+        <Route path="/payment" element={<PaymentMethod />} />
+        <Route path="/vouchers" element={<Vouchers />} />
+        <Route path="/recently-viewed" element={<RecentlyViewed />} />
+        <Route path="/account-settings" element={<AccountSettings />} />
       </Routes>
     </>
   )
