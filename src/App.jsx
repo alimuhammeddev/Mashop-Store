@@ -16,10 +16,12 @@ import PaymentMethod from "./Components/PaymentMethod"
 import Vouchers from "./Components/Vouchers"
 import RecentlyViewed from "./Components/RecentlyViewed"
 import AccountSettings from "./Components/AccountSettings"
+import ScrollToTop from "./Components/ScrollToTop"
 
 const App = () => {
   return (
     <>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
