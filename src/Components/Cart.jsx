@@ -10,7 +10,12 @@ const Cart = () => {
     <div className="container mx-auto">
       <div className="flex justify-between items-center mb-5">
         <h1 className="text-2xl font-medium">Cart</h1>
-        <button className="bg-orange-400 p-2 rounded-md text-white">View Wishlist Items</button>
+        <button
+          onClick={() => navigate("/wishlist")}
+          className="bg-orange-400 p-2 rounded-md text-white"
+        >
+          View Wishlist Items
+        </button>
       </div>
       <div className="bg-white shadow-lg rounded-lg p-2">
         <div className="grid grid-cols-6 font-semibold border-b pb-2">
@@ -49,11 +54,13 @@ const Cart = () => {
             </div>
             <div className="flex justify-between font-bold text-lg">
               <p>Total</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}</p>
+              <p>
+                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
+              </p>
             </div>
           </div>
-          <button 
-            onClick={() => navigate('/order')} 
+          <button
+            onClick={() => navigate("/order")}
             className="mt-4 w-full bg-orange-400 text-white py-2 rounded-lg hover:bg-orange-500"
           >
             PROCEED TO CHECKOUT
@@ -63,9 +70,9 @@ const Cart = () => {
         <div className="bg-white shadow-lg rounded-lg p-6 w-full lg:w-1/3">
           <p className="mb-2">If you have a promo code, enter it here</p>
           <div className="flex gap-2">
-            <input 
-              type="text" 
-              placeholder="Promo code" 
+            <input
+              type="text"
+              placeholder="Promo code"
               className="border p-2 w-full rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
             />
             <button className="bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500">

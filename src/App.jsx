@@ -17,6 +17,7 @@ import Vouchers from "./Components/Vouchers"
 import RecentlyViewed from "./Components/RecentlyViewed"
 import AccountSettings from "./Components/AccountSettings"
 import ScrollToTop from "./Components/ScrollToTop"
+import WishList from "./Pages/WishList"
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/recently-viewed" element={<RecentlyViewed />} />
         <Route path="/account-settings" element={<AccountSettings />} />
+        <Route path="/wishlist" element={<WishList />} />
       </Routes>
     </>
   )
