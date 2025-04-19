@@ -25,8 +25,8 @@ const WishList = () => {
                   </div>
                 </div>
                 <div className="space-x-2">
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><Trash /></button>
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><ShoppingCart /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><Trash /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><ShoppingCart /></button>
                 </div>
               </div>
 
@@ -40,8 +40,8 @@ const WishList = () => {
                   </div>
                 </div>
                 <div className="space-x-2">
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><Trash /></button>
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><ShoppingCart /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><Trash /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><ShoppingCart /></button>
                 </div>
               </div>
 
@@ -55,8 +55,8 @@ const WishList = () => {
                   </div>
                 </div>
                 <div className="space-x-2">
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><Trash /></button>
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><ShoppingCart /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><Trash /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><ShoppingCart /></button>
                 </div>
               </div>
 
@@ -70,8 +70,8 @@ const WishList = () => {
                   </div>
                 </div>
                 <div className="space-x-2">
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><Trash /></button>
-                  <button className="bg-orange-400 text-white p-2 rounded-full"><ShoppingCart /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><Trash /></button>
+                  <button className="bg-orange-400 text-white p-1 rounded-full"><ShoppingCart /></button>
                 </div>
               </div>
             </div>
