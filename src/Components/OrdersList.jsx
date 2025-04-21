@@ -51,6 +51,7 @@ const OrdersList = () => {
                       <p className="font-semibold">Order ID: {order.id}</p>
                       <p className="text-gray-500 text-sm">Date: {order.date}</p>
                       <p className="text-gray-700">Status: {order.status}</p>
+                      <button className=" text-gray-500 mt-2 hover:text-orange-500 duration-500">Track Order</button>
                     </div>
                   </div>
                   <p className="text-lg font-semibold text-orange-400">${order.total}</p>

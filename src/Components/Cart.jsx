@@ -1,10 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
+import { useState } from "react";
 import short from "../assets/short.jpg";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const getTotalCartAmount = () => 10; // Sample total cart amount
+  const [quantity, setQuantity] = useState(1);
+  const pricePerItem = 10;
+
+  const increaseQuantity = () => setQuantity((prev) => prev + 1);
+  const decreaseQuantity = () => {
+    if (quantity > 1) setQuantity((prev) => prev - 1);
+  };
+
+  const getTotalCartAmount = () => pricePerItem * quantity;
+  const deliveryFee = getTotalCartAmount() === 0 ? 0 : 2;
+  const totalWithDelivery = getTotalCartAmount() + deliveryFee;
 
   return (
     <div className="container mx-auto">
@@ -17,6 +28,7 @@ const Cart = () => {
           View Wishlist Items
         </button>
       </div>
+
       <div className="bg-white shadow-lg rounded-lg p-2">
         <div className="grid grid-cols-6 font-semibold border-b pb-2">
           <p>Items</p>
@@ -26,14 +38,32 @@ const Cart = () => {
           <p>Total</p>
           <p>Remove</p>
         </div>
+
         <div className="grid grid-cols-6 items-center py-4 border-b">
           <div className="w-16 h-16 bg-gray-200 flex items-center justify-center">
-            <img src={short} alt="" />
+            <img src={short} alt="Short" />
           </div>
           <p>Short</p>
-          <p>$10</p>
-          <p>1</p>
-          <p>$10</p>
+          <p>${pricePerItem}</p>
+
+          <div className="flex items-center gap-2">
+            <button
+              onClick={decreaseQuantity}
+              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              -
+            </button>
+            <span>{quantity}</span>
+            <button
+              onClick={increaseQuantity}
+              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+            >
+              +
+            </button>
+          </div>
+
+          <p>${getTotalCartAmount()}</p>
+
           <button className="text-red-500 font-bold cursor-pointer">
             <Trash2 size={20} />
           </button>
@@ -50,13 +80,11 @@ const Cart = () => {
             </div>
             <div className="flex justify-between border-b pb-2">
               <p>Delivery Fee</p>
-              <p>${getTotalCartAmount() === 0 ? 0 : 2}</p>
+              <p>${deliveryFee}</p>
             </div>
             <div className="flex justify-between font-bold text-lg">
               <p>Total</p>
-              <p>
-                ${getTotalCartAmount() === 0 ? 0 : getTotalCartAmount() + 2}
-              </p>
+              <p>${totalWithDelivery}</p>
             </div>
           </div>
           <button
