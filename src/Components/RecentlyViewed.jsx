@@ -6,7 +6,6 @@ const RecentlyViewed = () => {
   const [recentProducts, setRecentProducts] = useState([]);
 
   useEffect(() => {
-    // Retrieve recently viewed products from local storage
     const viewedProducts = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
     setRecentProducts(viewedProducts);
   }, []);

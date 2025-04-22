@@ -11,7 +11,7 @@ const WishList = () => {
   const handleAction = (message) => {
     setPopupMessage(message);
     setShowPopup(true);
-    setTimeout(() => setShowPopup(false), 1000); // Hide after 2.5 seconds
+    setTimeout(() => setShowPopup(false), 1000);
   };
 
   const renderItem = () => (
@@ -58,7 +58,6 @@ const WishList = () => {
         {renderItem()}
       </div>
 
-      {/* Confirmation Popup */}
       {showPopup && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-orange-500 text-white px-4 py-2 rounded-xl shadow-lg transition-opacity duration-300 z-50">
           {popupMessage}

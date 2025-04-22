@@ -45,9 +45,8 @@ export const CartProvider = ({ children }) => {
     setCartItems([]);
   };
 
-  // New function to get the number of distinct items in the cart
   const getCartItemCount = () => {
-    return cartItems.length;  // Count distinct items, not quantities
+    return cartItems.length;
   };
 
   return (

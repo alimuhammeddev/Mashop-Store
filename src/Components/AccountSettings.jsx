@@ -99,7 +99,6 @@ const AccountSettings = () => {
           </div>
         </div>
 
-        {/* Update Button */}
         <button
           onClick={handleUpdate}
           className="w-full bg-orange-400 text-white py-2 rounded-md hover:bg-orange-500 transition duration-300"

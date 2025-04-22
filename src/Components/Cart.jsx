@@ -8,7 +8,7 @@ const Cart = () => {
   const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
 
   const [showPopup, setShowPopup] = useState(false);
-  const [itemToRemove, setItemToRemove] = useState(null); // Stores the item to be removed
+  const [itemToRemove, setItemToRemove] = useState(null);
 
   const parsePrice = (priceStr) =>
     Number(priceStr.replace(/[^0-9.-]+/g, ""));
@@ -20,17 +20,17 @@ const Cart = () => {
   const totalWithDelivery = getTotalCartAmount() + deliveryFee;
 
   const handleRemoveClick = (item) => {
-    setItemToRemove(item); // Set the item to be removed
-    setShowPopup(true); // Show the confirmation popup
+    setItemToRemove(item);
+    setShowPopup(true);
   };
 
   const confirmRemove = () => {
-    removeFromCart(itemToRemove.id); // Remove the item
-    setShowPopup(false); // Close the popup
+    removeFromCart(itemToRemove.id);
+    setShowPopup(false);
   };
 
   const cancelRemove = () => {
-    setShowPopup(false); // Close the popup
+    setShowPopup(false);
   };
 
   return (
@@ -92,7 +92,7 @@ const Cart = () => {
               <p>${(parsePrice(item.price) * item.quantity).toFixed(2)}</p>
 
               <button
-                onClick={() => handleRemoveClick(item)} // Show the confirmation popup
+                onClick={() => handleRemoveClick(item)}
                 className="text-red-500 font-bold cursor-pointer"
               >
                 <Trash2 size={20} />
@@ -102,7 +102,6 @@ const Cart = () => {
         </div>
       )}
 
-      {/* Confirmation Popup */}
       {showPopup && (
         <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg">
