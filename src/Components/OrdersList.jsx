@@ -46,7 +46,7 @@ const OrdersList = () => {
                   className="border-b p-4 flex justify-between items-center"
                 >
                   <div className="flex items-center gap-4">
-                    <img src={order.image} alt="Product" className="w-16 h-16 rounded-lg" />
+                    <img src={order.image} alt="Product" className="w-16 h-16 rounded-md" />
                     <div>
                       <p className="font-semibold">Order ID: {order.id}</p>
                       <p className="text-gray-500 text-sm">Date: {order.date}</p>

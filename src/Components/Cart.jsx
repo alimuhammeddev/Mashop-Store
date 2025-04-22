@@ -48,7 +48,7 @@ const Cart = () => {
               key={item.id}
               className="grid grid-cols-6 items-center py-4 border-b"
             >
-              <div className="w-16 h-16 bg-gray-200 flex items-center justify-center">
+              <div className="w-16 h-16 flex items-center justify-center">
                 <img src={item.img} alt={item.name} />
               </div>
               <p>{item.name}</p>

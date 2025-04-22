@@ -1,14 +1,27 @@
 import { useState } from "react";
 import { Shirt, ShoppingBag, Utensils, MonitorSmartphone, ShoppingCart, Heart, Eye, ShirtIcon } from "lucide-react";
-import { accessories1, blender, bluepants, cloth, clothes, clothing, girl, hoddie, jacket, kit, kitchen2, kitchenset, laptop2, laptop4, phone, plates, short, smartphone, smartwatch, whiteshirt } from "../assets";
+import {
+  accessories1, blender, bluepants, cloth, clothes, clothing, girl, hoddie, jacket,
+  kit, kitchen2, kitchenset, laptop2, laptop4, phone, plates, short, smartphone,
+  smartwatch, whiteshirt
+} from "../assets";
 import ProductPopup from "./ProductPopup";
-import { useCart } from "../context/CartContext"; 
+import { useCart } from "../context/CartContext";
 
 const Items = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const { addToCart } = useCart();
+
+  const handleAddToCart = (item) => {
+    addToCart(item);
+    setShowConfirmation(true);
+    setTimeout(() => {
+      setShowConfirmation(false);
+    }, 2000); // Hide after 2 seconds
+  };
 
   const items = [
     { id: 1, img: hoddie, name: "Brown Hoodie", price: "$3,500", discount: "$700" },
@@ -36,7 +49,7 @@ const Items = () => {
   const visibleItems = items.slice(0, visibleCount);
 
   return (
-    <section>
+    <section className="relative">
       <div>
         <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md">
           Our Product Categories
@@ -46,25 +59,25 @@ const Items = () => {
         </h2>
 
         <div className="flex items-center justify-center flex-wrap mt-5 gap-2">
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <Shirt /> Clothes
-        </h1>
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <ShirtIcon /> Shirts
-        </h1>
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <Shirt /> Trousers
-        </h1>
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <MonitorSmartphone /> Gadgets
-        </h1>
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <ShoppingBag /> Accessories
-        </h1>
-        <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
-          <Utensils /> Kitchen Utensils
-        </h1>
-      </div>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <Shirt /> Clothes
+          </h1>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <ShirtIcon /> Shirts
+          </h1>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <Shirt /> Trousers
+          </h1>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <MonitorSmartphone /> Gadgets
+          </h1>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <ShoppingBag /> Accessories
+          </h1>
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+            <Utensils /> Kitchen Utensils
+          </h1>
+        </div>
       </div>
 
       <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 mt-5">
@@ -72,11 +85,11 @@ const Items = () => {
           <div key={item.id} className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
             <div className="w-full h-48 relative overflow-hidden rounded-lg">
               <img src={item.img} alt={item.name} className="w-full h-full object-cover rounded-lg" />
-              
+
               <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
                   className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
-                  onClick={() => addToCart(item)}
+                  onClick={() => handleAddToCart(item)}
                 >
                   <ShoppingCart className="text-orange-500 w-6 h-6" />
                 </button>
@@ -112,7 +125,15 @@ const Items = () => {
         </button>
       </div>
 
-      {selectedProduct && <ProductPopup product={selectedProduct} onClose={() => setSelectedProduct(null)} />}
+      {selectedProduct && (
+        <ProductPopup product={selectedProduct} onClose={() => setSelectedProduct(null)} />
+      )}
+
+      {showConfirmation && (
+        <div className="fixed bottom-5 right-5 bg-orange-500 text-white px-4 py-2 rounded-md shadow-md transition-all duration-300">
+          Product added to cart successfully!
+        </div>
+      )}
     </section>
   );
 };

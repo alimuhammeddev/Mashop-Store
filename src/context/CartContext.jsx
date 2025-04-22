@@ -9,14 +9,11 @@ export const CartProvider = ({ children }) => {
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
-      const existingItem = prevItems.find((i) => i.id === item.id);
-      if (existingItem) {
-        return prevItems.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        );
-      } else {
-        return [...prevItems, { ...item, quantity: 1 }];
+      const exists = prevItems.some((i) => i.id === item.id);
+      if (exists) {
+        return prevItems;
       }
+      return [...prevItems, { ...item, quantity: 1 }];
     });
   };
 
@@ -33,7 +30,15 @@ export const CartProvider = ({ children }) => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart, clearCart, getCartItemCount }}>
+    <CartContext.Provider
+      value={{
+        cartItems,
+        addToCart,
+        removeFromCart,
+        clearCart,
+        getCartItemCount,
+      }}
+    >
       {children}
     </CartContext.Provider>
   );
