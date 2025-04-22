@@ -18,10 +18,11 @@ import RecentlyViewed from "./Components/RecentlyViewed"
 import AccountSettings from "./Components/AccountSettings"
 import ScrollToTop from "./Components/ScrollToTop"
 import WishList from "./Pages/WishList"
+import { CartProvider } from "./context/CartContext"
 
 const App = () => {
   return (
-    <>
+    <CartProvider>
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<Login />} />
@@ -43,7 +44,7 @@ const App = () => {
         <Route path="/account-settings" element={<AccountSettings />} />
         <Route path="/wishlist" element={<WishList />} />
       </Routes>
-    </>
+    </CartProvider>
   )
 }
 

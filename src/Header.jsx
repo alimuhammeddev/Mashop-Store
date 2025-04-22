@@ -1,12 +1,13 @@
 import { Search, ShoppingCart, User, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "./context/CartContext";
 
 export default function Header() {
+  const { getCartItemCount } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
-  const cartItemCount = 3; // Example cart item count
-  const notifications = 5; // Example notification count
+  const notifications = 5;
 
   return (
     <header className="w-full bg-white shadow-md p-4 fixed top-0 left-0 z-50">
@@ -30,9 +31,9 @@ export default function Header() {
           <div className="relative cursor-pointer">
             <Link to="/cart" className="relative cursor-pointer">
               <ShoppingCart className="h-6 w-6 text-gray-700" />
-              {cartItemCount > 0 && (
+              {getCartItemCount() >= 0 && (
                 <span className="absolute -top-1 -right-2 bg-orange-400 text-white text-xs font-bold rounded-full px-1.5 py-0.5">
-                  {cartItemCount}
+                  {getCartItemCount()}
                 </span>
               )}
             </Link>

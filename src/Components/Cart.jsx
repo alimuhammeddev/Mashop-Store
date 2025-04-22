@@ -1,19 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { Trash2 } from "lucide-react";
 import { useState } from "react";
-import short from "../assets/short.jpg";
+import { useCart } from "../context/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const [quantity, setQuantity] = useState(1);
-  const pricePerItem = 10;
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useCart();
 
-  const increaseQuantity = () => setQuantity((prev) => prev + 1);
-  const decreaseQuantity = () => {
-    if (quantity > 1) setQuantity((prev) => prev - 1);
-  };
+  const getTotalCartAmount = () =>
+    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
 
-  const getTotalCartAmount = () => pricePerItem * quantity;
   const deliveryFee = getTotalCartAmount() === 0 ? 0 : 2;
   const totalWithDelivery = getTotalCartAmount() + deliveryFee;
 
@@ -29,86 +26,112 @@ const Cart = () => {
         </button>
       </div>
 
-      <div className="bg-white shadow-lg rounded-lg p-2">
-        <div className="grid grid-cols-6 font-semibold border-b pb-2">
-          <p>Items</p>
-          <p>Title</p>
-          <p>Price</p>
-          <p>Quantity</p>
-          <p>Total</p>
-          <p>Remove</p>
+      {cartItems.length === 0 ? (
+        <div className="lg:h-[40vh] h-[20vh] flex items-center justify-center text-center">
+          <p className="text-lg text-gray-600">
+            Your cart is empty. Add some items to your cart!
+          </p>
         </div>
-
-        <div className="grid grid-cols-6 items-center py-4 border-b">
-          <div className="w-16 h-16 bg-gray-200 flex items-center justify-center">
-            <img src={short} alt="Short" />
+      ) : (
+        <div className="bg-white shadow-lg rounded-lg p-2">
+          <div className="grid grid-cols-6 font-semibold border-b pb-2">
+            <p>Items</p>
+            <p>Title</p>
+            <p>Price</p>
+            <p>Quantity</p>
+            <p>Total</p>
+            <p>Remove</p>
           </div>
-          <p>Short</p>
-          <p>${pricePerItem}</p>
 
-          <div className="flex items-center gap-2">
-            <button
-              onClick={decreaseQuantity}
-              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+          {cartItems.map((item) => (
+            <div
+              key={item.id}
+              className="grid grid-cols-6 items-center py-4 border-b"
             >
-              -
-            </button>
-            <span>{quantity}</span>
+              <div className="w-16 h-16 bg-gray-200 flex items-center justify-center">
+                <img src={item.img} alt={item.name} />
+              </div>
+              <p>{item.name}</p>
+              <p>{item.price}</p>
+
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={() => decreaseQuantity(item.id)}
+                  className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  -
+                </button>
+                <span>{item.quantity}</span>
+                <button
+                  onClick={() => increaseQuantity(item.id)}
+                  className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+                >
+                  +
+                </button>
+              </div>
+
+              <p>${item.price * item.quantity}</p>
+
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="text-red-500 font-bold cursor-pointer"
+              >
+                <Trash2 size={20} />
+              </button>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {cartItems.length > 0 && (
+        <div className="mt-6 flex flex-col lg:flex-row gap-6">
+          <div className="bg-white shadow-lg rounded-lg p-6 flex-1">
+            <h2 className="text-xl font-bold mb-4">Cart Totals</h2>
+            <div className="space-y-2">
+              <div className="flex justify-between border-b pb-2">
+                <p>Subtotal</p>
+                <p>${getTotalCartAmount()}</p>
+              </div>
+              <div className="flex justify-between border-b pb-2">
+                <p>Delivery Fee</p>
+                <p>${deliveryFee}</p>
+              </div>
+              <div className="flex justify-between font-bold text-lg">
+                <p>Total</p>
+                <p>${totalWithDelivery}</p>
+              </div>
+            </div>
             <button
-              onClick={increaseQuantity}
-              className="px-2 py-1 bg-gray-200 rounded hover:bg-gray-300"
+              onClick={() =>
+                navigate("/order", {
+                  state: {
+                    subtotal: getTotalCartAmount(),
+                    deliveryFee,
+                    total: totalWithDelivery,
+                  },
+                })
+              }
+              className="mt-4 w-full bg-orange-400 text-white py-2 rounded-lg hover:bg-orange-500"
             >
-              +
+              PROCEED TO CHECKOUT
             </button>
           </div>
 
-          <p>${getTotalCartAmount()}</p>
-
-          <button className="text-red-500 font-bold cursor-pointer">
-            <Trash2 size={20} />
-          </button>
-        </div>
-      </div>
-
-      <div className="mt-6 flex flex-col lg:flex-row gap-6">
-        <div className="bg-white shadow-lg rounded-lg p-6 flex-1">
-          <h2 className="text-xl font-bold mb-4">Cart Totals</h2>
-          <div className="space-y-2">
-            <div className="flex justify-between border-b pb-2">
-              <p>Subtotal</p>
-              <p>${getTotalCartAmount()}</p>
-            </div>
-            <div className="flex justify-between border-b pb-2">
-              <p>Delivery Fee</p>
-              <p>${deliveryFee}</p>
-            </div>
-            <div className="flex justify-between font-bold text-lg">
-              <p>Total</p>
-              <p>${totalWithDelivery}</p>
+          <div className="bg-white shadow-lg rounded-lg p-6 w-full lg:w-1/3">
+            <p className="mb-2">If you have a promo code, enter it here</p>
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Promo code"
+                className="border p-2 w-full rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
+              />
+              <button className="bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500">
+                Submit
+              </button>
             </div>
           </div>
-          <button
-            onClick={() => navigate("/order")}
-            className="mt-4 w-full bg-orange-400 text-white py-2 rounded-lg hover:bg-orange-500"
-          >
-            PROCEED TO CHECKOUT
-          </button>
         </div>
-
-        <div className="bg-white shadow-lg rounded-lg p-6 w-full lg:w-1/3">
-          <p className="mb-2">If you have a promo code, enter it here</p>
-          <div className="flex gap-2">
-            <input
-              type="text"
-              placeholder="Promo code"
-              className="border p-2 w-full rounded-lg focus:outline-none focus:ring-1 focus:ring-blue-500"
-            />
-            <button className="bg-orange-400 text-white px-4 py-2 rounded-lg hover:bg-orange-500">
-              Submit
-            </button>
-          </div>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -2,9 +2,13 @@ import { useState } from "react";
 import { Shirt, ShoppingBag, Utensils, MonitorSmartphone, ShoppingCart, Heart, Eye, ShirtIcon } from "lucide-react";
 import { accessories1, blender, bluepants, cloth, clothes, clothing, girl, hoddie, jacket, kit, kitchen2, kitchenset, laptop2, laptop4, phone, plates, short, smartphone, smartwatch, whiteshirt } from "../assets";
 import ProductPopup from "./ProductPopup";
+import { useCart } from "../context/CartContext"; 
+
 const Items = () => {
   const [visibleCount, setVisibleCount] = useState(4);
   const [selectedProduct, setSelectedProduct] = useState(null);
+
+  const { addToCart } = useCart();
 
   const items = [
     { id: 1, img: hoddie, name: "Brown Hoodie", price: "$3,500", discount: "$700" },
@@ -70,7 +74,10 @@ const Items = () => {
               <img src={item.img} alt={item.name} className="w-full h-full object-cover rounded-lg" />
               
               <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
+                <button
+                  className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
+                  onClick={() => addToCart(item)}
+                >
                   <ShoppingCart className="text-orange-500 w-6 h-6" />
                 </button>
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
