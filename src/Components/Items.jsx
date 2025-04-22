@@ -54,27 +54,27 @@ const Items = () => {
         <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md">
           Our Product Categories
         </h1>
-        <h2 className="lg:text-2xl font-medium text-center px-4 mt-2">
+        <h2 className="lg:text-xl font-medium text-center px-4 mt-2">
           See different categories of items or products here
         </h2>
 
         <div className="flex items-center justify-center flex-wrap mt-5 gap-2">
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <Shirt /> Clothes
           </h1>
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <ShirtIcon /> Shirts
           </h1>
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <Shirt /> Trousers
           </h1>
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <MonitorSmartphone /> Gadgets
           </h1>
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <ShoppingBag /> Accessories
           </h1>
-          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-2 rounded-md">
+          <h1 className="flex items-center gap-2 text-center bg-orange-400 text-white w-fit p-1 rounded-md">
             <Utensils /> Kitchen Utensils
           </h1>
         </div>
@@ -91,23 +91,23 @@ const Items = () => {
                   className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
                   onClick={() => handleAddToCart(item)}
                 >
-                  <ShoppingCart className="text-orange-500 w-6 h-6" />
+                  <ShoppingCart className="text-orange-500 w-5 h-5" />
                 </button>
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
-                  <Heart className="text-orange-500 w-6 h-6" />
+                  <Heart className="text-orange-500 w-5 h-5" />
                 </button>
                 <button
                   className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
                   onClick={() => setSelectedProduct(item)}
                 >
-                  <Eye className="text-orange-500 w-6 h-6" />
+                  <Eye className="text-orange-500 w-5 h-5" />
                 </button>
               </div>
             </div>
 
             <div className="mt-3 text-center">
-              <h1 className="lg:text-lg font-semibold">{item.name}</h1>
-              <h1 className="lg:text-xl text-base font-bold text-orange-500">Price {item.price}</h1>
+              <h1 className="lg:text-lg font-medium">{item.name}</h1>
+              <h1 className="lg:text-lg text-base text-orange-500">Price {item.price}</h1>
               <p className="line-through text-gray-400">Discount {item.discount}</p>
             </div>
           </div>

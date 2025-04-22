@@ -33,7 +33,7 @@ const Cards = () => {
         <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md">
           Our Latest Collections
         </h1>
-        <h2 className="lg:text-2xl font-medium text-center px-4 mt-2">
+        <h2 className="lg:text-xl font-medium text-center px-4 mt-2">
           Shop all our latest collections here and enjoy up to 50% discount or more on each product you shop{" "}
         </h2>
       </div>
@@ -57,10 +57,10 @@ const Cards = () => {
                 </div>
 
                 <div className="absolute inset-0 flex items-center justify-center space-x-3 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <ShoppingCart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
-                  <Heart size={40} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
+                  <ShoppingCart size={35} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
+                  <Heart size={35} className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform" />
                   <Eye
-                    size={40}
+                    size={35}
                     className="text-orange-500 bg-white p-2 rounded-full cursor-pointer hover:scale-110 transition-transform"
                     onClick={() => setSelectedProduct(card)}
                   />
@@ -68,8 +68,8 @@ const Cards = () => {
               </div>
 
               <div className="mt-3 text-center">
-                <h1 className="lg:text-lg font-semibold">{card.title}</h1>
-                <p className="lg:text-xl text-base font-bold text-orange-500">{card.price}</p>
+                <h1 className="lg:text-lg font-medium">{card.title}</h1>
+                <p className="lg:text-lg text-base text-orange-500">{card.price}</p>
                 <p className="line-through text-gray-400">{card.oldPrice}</p>
               </div>
             </div>

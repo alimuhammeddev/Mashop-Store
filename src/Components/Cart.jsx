@@ -5,14 +5,33 @@ import { useCart } from "../context/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } =
-    useCart();
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
+
+  const [showPopup, setShowPopup] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null); // Stores the item to be removed
+
+  const parsePrice = (priceStr) =>
+    Number(priceStr.replace(/[^0-9.-]+/g, ""));
 
   const getTotalCartAmount = () =>
-    cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    cartItems.reduce((total, item) => total + parsePrice(item.price) * item.quantity, 0);
 
   const deliveryFee = getTotalCartAmount() === 0 ? 0 : 2;
   const totalWithDelivery = getTotalCartAmount() + deliveryFee;
+
+  const handleRemoveClick = (item) => {
+    setItemToRemove(item); // Set the item to be removed
+    setShowPopup(true); // Show the confirmation popup
+  };
+
+  const confirmRemove = () => {
+    removeFromCart(itemToRemove.id); // Remove the item
+    setShowPopup(false); // Close the popup
+  };
+
+  const cancelRemove = () => {
+    setShowPopup(false); // Close the popup
+  };
 
   return (
     <div className="container mx-auto">
@@ -70,16 +89,40 @@ const Cart = () => {
                 </button>
               </div>
 
-              <p>${item.price * item.quantity}</p>
+              <p>${(parsePrice(item.price) * item.quantity).toFixed(2)}</p>
 
               <button
-                onClick={() => removeFromCart(item.id)}
+                onClick={() => handleRemoveClick(item)} // Show the confirmation popup
                 className="text-red-500 font-bold cursor-pointer"
               >
                 <Trash2 size={20} />
               </button>
             </div>
           ))}
+        </div>
+      )}
+
+      {/* Confirmation Popup */}
+      {showPopup && (
+        <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75 z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg">
+            <h2 className="text-xl font-bold mb-4">Confirm Removal</h2>
+            <p>Are you sure you want to remove this item <br /> from your cart?</p>
+            <div className="flex justify-end gap-4 mt-4">
+              <button
+                onClick={cancelRemove}
+                className=" bg-gray-300 p-2 rounded-lg"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={confirmRemove}
+                className="p-2 bg-orange-400 text-white rounded-lg"
+              >
+                Remove
+              </button>
+            </div>
+          </div>
         </div>
       )}
 
@@ -90,7 +133,7 @@ const Cart = () => {
             <div className="space-y-2">
               <div className="flex justify-between border-b pb-2">
                 <p>Subtotal</p>
-                <p>${getTotalCartAmount()}</p>
+                <p>${getTotalCartAmount().toFixed(2)}</p>
               </div>
               <div className="flex justify-between border-b pb-2">
                 <p>Delivery Fee</p>
@@ -98,7 +141,7 @@ const Cart = () => {
               </div>
               <div className="flex justify-between font-bold text-lg">
                 <p>Total</p>
-                <p>${totalWithDelivery}</p>
+                <p>${totalWithDelivery.toFixed(2)}</p>
               </div>
             </div>
             <button

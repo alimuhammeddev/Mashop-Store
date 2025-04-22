@@ -30,11 +30,11 @@ const Home = () => {
         <>
           <div className="relative p-4 lg:mt-36 md:mt-36 mt-16">
             <img src={hero} alt="" className="w-full" />
-            <div className="absolute lg:top-36 md:top-16 top-5 lg:right-36 space-y-2 right-10">
-              <h1 className="text-white text-lg lg:text-5xl">
+            <div className="absolute lg:top-36 md:top-16 top-7 lg:right-36 space-y-2 right-10">
+              <h1 className="text-white text-lg font-medium lg:text-4xl">
                 Enjoy up to 50% off <br /> on selected items
               </h1>
-              <p className="lg:block md:block hidden text-white text-3xl">
+              <p className="lg:block md:block hidden text-white text-2xl">
                 Shop on all your favourite items on Mashop today, <br /> We are the best e-commerce brand and customers <br /> satisfaction is our top priority
               </p>
               <div>

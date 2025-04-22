@@ -21,12 +21,33 @@ export const CartProvider = ({ children }) => {
     setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
   };
 
+  const increaseQuantity = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item
+      )
+    );
+  };
+
+  const decreaseQuantity = (id) => {
+    setCartItems((prevItems) =>
+      prevItems.map((item) =>
+        item.id === id
+          ? { ...item, quantity: item.quantity > 1 ? item.quantity - 1 : 1 }
+          : item
+      )
+    );
+  };
+
   const clearCart = () => {
     setCartItems([]);
   };
 
+  // New function to get the number of distinct items in the cart
   const getCartItemCount = () => {
-    return cartItems.reduce((total, item) => total + item.quantity, 0);
+    return cartItems.length;  // Count distinct items, not quantities
   };
 
   return (
@@ -37,6 +58,8 @@ export const CartProvider = ({ children }) => {
         removeFromCart,
         clearCart,
         getCartItemCount,
+        increaseQuantity,
+        decreaseQuantity,
       }}
     >
       {children}

@@ -87,7 +87,7 @@ const ShopCards = () => {
   return (
     <section className="max-w-7xl mx-auto lg:p-4 p-2">
       <div className="lg:flex items-center justify-between lg:flex-row flex-col">
-        <h1 className="lg:text-2xl font-medium">Shop on all kinds of products here</h1>
+        <h1 className="lg:text-xl font-medium">Shop on all kinds of products here</h1>
         <div className="flex items-center gap-2 cursor-pointer lg:mt-0 md:mt-0 mt-3">
           <p>Sort by:</p>
           <h1 className="flex items-center bg-white border-orange-400 border text-orange-400 p-1 rounded-sm gap-1">
