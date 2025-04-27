@@ -5,16 +5,19 @@ import { useCart } from "../context/CartContext";
 
 const Cart = () => {
   const navigate = useNavigate();
-  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } = useCart();
+  const { cartItems, removeFromCart, increaseQuantity, decreaseQuantity } =
+    useCart();
 
   const [showPopup, setShowPopup] = useState(false);
   const [itemToRemove, setItemToRemove] = useState(null);
 
-  const parsePrice = (priceStr) =>
-    Number(priceStr.replace(/[^0-9.-]+/g, ""));
+  const parsePrice = (priceStr) => Number(priceStr.replace(/[^0-9.-]+/g, ""));
 
   const getTotalCartAmount = () =>
-    cartItems.reduce((total, item) => total + parsePrice(item.price) * item.quantity, 0);
+    cartItems.reduce(
+      (total, item) => total + parsePrice(item.price) * item.quantity,
+      0
+    );
 
   const deliveryFee = getTotalCartAmount() === 0 ? 0 : 2;
   const totalWithDelivery = getTotalCartAmount() + deliveryFee;
@@ -53,10 +56,11 @@ const Cart = () => {
         </div>
       ) : (
         <div className="bg-white shadow-lg rounded-lg p-2">
-          <div className="grid grid-cols-6 font-semibold border-b pb-2">
+          <div className="grid lg:grid-cols-6 grid-cols-4 font-semibold border-b pb-2">
             <p>Items</p>
-            <p>Title</p>
-            <p>Price</p>
+            {/* Hide Title and Price headers on small screens */}
+            <p className="hidden lg:block">Title</p>
+            <p className="hidden lg:block">Price</p>
             <p>Quantity</p>
             <p>Total</p>
             <p>Remove</p>
@@ -65,13 +69,20 @@ const Cart = () => {
           {cartItems.map((item) => (
             <div
               key={item.id}
-              className="grid grid-cols-6 items-center py-4 border-b"
+              className="grid lg:grid-cols-6 grid-cols-4 items-center py-4 border-b lg:pb-16 pb-28"
             >
-              <div className="w-16 h-16 flex items-center justify-center">
-                <img src={item.img} alt={item.name} />
+              <div className="w-16 h-16 items-center justify-center">
+                <img src={item.img} alt={item.name} className="object-cover" />
+                {/* Show Title and Price below image on small screens */}
+                <div className="mt-2 lg:hidden">
+                  <p className="text-sm text-center">{item.name}</p>
+                  <p className="text-sm text-center">{item.price}</p>
+                </div>
               </div>
-              <p>{item.name}</p>
-              <p>{item.price}</p>
+
+              {/* Hide Title and Price in their normal spot on small screens */}
+              <p className="hidden lg:block">{item.name}</p>
+              <p className="hidden lg:block">{item.price}</p>
 
               <div className="flex items-center gap-2">
                 <button
@@ -106,7 +117,9 @@ const Cart = () => {
         <div className="fixed inset-0 flex justify-center items-center bg-gray-500 bg-opacity-75 z-50">
           <div className="bg-white p-6 rounded-lg shadow-lg max-w-lg">
             <h2 className="text-xl font-bold mb-4">Confirm Removal</h2>
-            <p>Are you sure you want to remove this item <br /> from your cart?</p>
+            <p>
+              Are you sure you want to remove this item <br /> from your cart?
+            </p>
             <div className="flex justify-end gap-4 mt-4">
               <button
                 onClick={cancelRemove}
