@@ -30,7 +30,7 @@ const Home = () => {
         <>
           <div className="relative p-4 lg:mt-36 md:mt-36 mt-16">
             <img src={hero} alt="" className="w-full" />
-            <div className="absolute lg:top-36 md:top-16 top-7 lg:right-36 space-y-2 right-10">
+            <div className="absolute lg:top-36 md:top-16 top-6 lg:right-36 space-y-2 right-10">
               <h1 className="text-white text-lg font-medium lg:text-4xl">
                 Enjoy up to 50% off <br /> on selected items
               </h1>
