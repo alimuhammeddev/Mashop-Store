@@ -5,7 +5,7 @@ const ProductPopup = ({ product, onClose }) => {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
-      <div className="bg-white p-6 rounded-lg shadow-lg w-[350px]">
+      <div className="bg-white p-3 rounded-lg shadow-lg w-[350px]">
 
         <img src={product.img} alt={product.name} className="w-full h-48 object-cover rounded-md" />
 
