@@ -19,7 +19,7 @@ const SignUp = () => {
   return (
     <section>
       <div className="flex lg:min-h-screen items-center justify-center bg-gray-100 lg:p-0 p-5">
-        <div className="w-full max-w-md lg:p-8 p-5 space-y-6 bg-white shadow-lg rounded-xl lg:mt-0 mt-24">
+        <div className="w-full max-w-md lg:p-8 p-5 space-y-6 bg-white shadow-lg rounded-xl lg:mt-0 mt-16">
           <div>
             <h1 className="text-center text-2xl">New To Mashop?</h1>
             <p className="text-center">Create a new customer account</p>
