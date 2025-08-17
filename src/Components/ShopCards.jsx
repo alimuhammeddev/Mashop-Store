@@ -106,15 +106,15 @@ const ShopCards = () => {
               <img src={product.img} alt="Product" className="flex justify-center mx-auto" />
               <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md">
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
-                  <ShoppingCart className="text-orange-500 w-6 h-6" />
+                  <ShoppingCart className="text-orange-500 lg:w-6 lg:h-6 w-4 h-4" />
                 </button>
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition">
-                  <Heart className="text-orange-500 w-6 h-6" />
+                  <Heart className="text-orange-500 lg:w-6 lg:h-6 w-4 h-4" />
                 </button>
                 <button className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
                   onClick={() => setSelectedProduct(product)}
                 >
-                  <Eye className="text-orange-500 w-6 h-6" />
+                  <Eye className="text-orange-500 lg:w-6 lg:h-6 w-4 h-4" />
                 </button>
               </div>
             </div>
