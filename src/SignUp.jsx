@@ -5,12 +5,53 @@ import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
+
+  const validateForm = (formData) => {
+    let newErrors = {};
+
+    if (!formData.fullName.trim()) {
+      newErrors.fullName = "Full name is required";
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = "Enter a valid email address";
+    }
+
+    if (!formData.username.trim()) {
+      newErrors.username = "Username is required";
+    }
+
+    if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters long";
+    }
+
+    return newErrors;
+  };
 
   const handleSignUp = (e) => {
     e.preventDefault();
     setLoading(true);
 
+    const formData = {
+      fullName: e.target.fullName.value,
+      email: e.target.email.value,
+      username: e.target.username.value,
+      password: e.target.password.value,
+    };
+
+    const validationErrors = validateForm(formData);
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      setLoading(false);
+      return;
+    }
+
+    localStorage.setItem("mashopUser", JSON.stringify(formData));
+
+    setErrors({});
     setTimeout(() => {
       navigate("/home");
     }, 2000);
@@ -24,39 +65,64 @@ const SignUp = () => {
             <h1 className="text-center text-2xl">New To Mashop?</h1>
             <p className="text-center">Create a new customer account</p>
           </div>
+
           <form className="space-y-4" onSubmit={handleSignUp}>
             <div>
               <input
                 type="text"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                name="fullName"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.fullName ? "border-red-500" : ""
+                }`}
                 placeholder="Enter your full name"
-                required
               />
+              {errors.fullName && (
+                <p className="text-red-500 text-sm mt-1">{errors.fullName}</p>
+              )}
             </div>
+
             <div>
               <input
                 type="email"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                name="email"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.email ? "border-red-500" : ""
+                }`}
                 placeholder="Enter your email"
-                required
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
+
             <div>
               <input
                 type="text"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                name="username"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.username ? "border-red-500" : ""
+                }`}
                 placeholder="Enter your username"
-                required
               />
+              {errors.username && (
+                <p className="text-red-500 text-sm mt-1">{errors.username}</p>
+              )}
             </div>
+
             <div>
               <input
                 type="password"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                name="password"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.password ? "border-red-500" : ""
+                }`}
                 placeholder="Create a password"
-                required
               />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
             </div>
+
             <button
               type="submit"
               className="w-full px-4 mt-5 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-600 flex items-center justify-center"
@@ -69,7 +135,7 @@ const SignUp = () => {
               )}
             </button>
           </form>
-          
+
           <div>
             <div className="flex items-center my-6">
               <div className="flex-grow border-t border-blue-500"></div>

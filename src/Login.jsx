@@ -5,15 +5,44 @@ import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
 
+    const emailOrUsername = e.target.email.value.trim();
+    const password = e.target.password.value.trim();
+
+    const storedUser = JSON.parse(localStorage.getItem("mashopUser"));
+
     setTimeout(() => {
-      navigate("/home");
-    }, 2000);
+      let newErrors = {};
+
+      if (
+        !storedUser ||
+        !(
+          storedUser.email === emailOrUsername ||
+          storedUser.username === emailOrUsername
+        )
+      ) {
+        newErrors.email = "Invalid email or username";
+      }
+
+      if (!storedUser || storedUser.password !== password) {
+        newErrors.password = "Incorrect password";
+      }
+
+      if (Object.keys(newErrors).length > 0) {
+        setErrors(newErrors);
+      } else {
+        setErrors({});
+        navigate("/home");
+      }
+
+      setLoading(false);
+    }, 1200);
   };
 
   return (
@@ -24,23 +53,37 @@ const Login = () => {
             <h1 className="text-center text-xl">Welcome To Mashop</h1>
             <p className="text-center">Login to your customer account</p>
           </div>
+
           <form className="space-y-4" onSubmit={handleLogin}>
             <div>
               <input
-                type="email"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                type="text"
+                name="email"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.email ? "border-red-500" : ""
+                }`}
                 placeholder="Enter your email or username"
                 required
               />
+              {errors.email && (
+                <p className="text-red-500 text-sm mt-1">{errors.email}</p>
+              )}
             </div>
             <div>
               <input
                 type="password"
-                className="w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none"
+                name="password"
+                className={`w-full px-4 py-2 mt-1 border rounded-lg focus:ring-1 focus:ring-blue-300 focus:outline-none ${
+                  errors.password ? "border-red-500" : ""
+                }`}
                 placeholder="Enter your password"
                 required
               />
+              {errors.password && (
+                <p className="text-red-500 text-sm mt-1">{errors.password}</p>
+              )}
             </div>
+
             <button
               type="submit"
               className="w-full px-4 mt-5 py-2 font-bold text-white bg-blue-500 rounded-lg hover:bg-blue-600 flex items-center justify-center"
