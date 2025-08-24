@@ -21,6 +21,7 @@ import WishList from "./Pages/WishList"
 import { CartProvider } from "./context/CartContext"
 import Contact from "./Pages/Contact"
 import About from "./Pages/About"
+import FAQs from "./Pages/FAQs"
 
 const App = () => {
   return (
@@ -47,6 +48,7 @@ const App = () => {
         <Route path="/wishlist" element={<WishList />} />
         <Route path="/contact-us" element={<Contact />} />
         <Route path="/about-us" element={<About />} />
+        <Route path="/faq" element={<FAQs />} />
       </Routes>
     </CartProvider>
   )
