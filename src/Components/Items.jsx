@@ -80,7 +80,7 @@ const Items = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 mt-5">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-3 mt-5">
         {visibleItems.map((item) => (
           <div key={item.id} className="flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
             <div className="w-full h-48 relative overflow-hidden rounded-lg">
