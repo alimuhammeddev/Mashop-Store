@@ -80,13 +80,13 @@ const Items = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-2 mt-5">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-3 mt-5">
         {visibleItems.map((item) => (
           <div key={item.id} className="flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
             <div className="w-full h-48 relative overflow-hidden rounded-lg">
               <img src={item.img} alt={item.name} className="w-full h-full object-cover rounded-lg" />
 
-              <div className="absolute inset-0 flex items-center justify-center gap-3 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 flex items-center justify-center lg:gap-3 gap-2 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
                   className="bg-white p-2 rounded-full shadow-md hover:bg-gray-200 transition"
                   onClick={() => handleAddToCart(item)}
