@@ -34,7 +34,7 @@ const PaymentMethod = () => {
   return (
     <section>
       <Header />
-      <div className="lg:mt-36 mt-16 p-4">
+      <div className="lg:mt-40 mt-16 p-4 lg:max-w-7xl mx-auto lg:p-0">
         <GobackButton />
       </div>
       <div className="p-4 max-w-lg mx-auto">

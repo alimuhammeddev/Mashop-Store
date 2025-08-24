@@ -20,14 +20,14 @@ const Profile = () => {
       <div>
         <Header />
       </div>
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="p-4 lg:mt-36 md:mt-36 mt-16 px-20">
         <h1 className="lg:text-2xl text-xl font-medium">My Mashop Account</h1>
         <p className="text-lg">Welcome Ali!</p>
         <p className="text-lg text-orange-400">muhammedaliali2020@gmail.com</p>
       </div>
       <p className="border w-full -mt-2"></p>
 
-      <div className="p-4 max-w-xl space-x-5 justify-center mx-auto mt-5">
+      <div className="p-4 max-w-7xl space-x-5 justify-center mx-auto mt-5">
         <Link to="/orders">
           <div className="flex items-center justify-between">
             <h1 className="flex items-center gap-2">

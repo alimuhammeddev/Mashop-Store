@@ -9,7 +9,7 @@ const Contact = () => {
                 <Header />
             </div>
 
-            <div className='lg:p-0 p-4 lg:mt-36 mt-16 lg:max-w-7xl mx-auto'>
+            <div className='lg:p-0 p-4 lg:mt-40 mt-16 lg:max-w-7xl mx-auto'>
                 <div>
                     <h1 className='text-center lg:text-3xl text-xl font-medium'>Contact us</h1>
                 </div>

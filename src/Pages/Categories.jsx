@@ -10,7 +10,7 @@ const Categories = () => {
         <Header />
       </div>
 
-      <div className='lg:mt-48 md:mt-40 mt-24 p-4'>
+      <div className='lg:mt-36 md:mt-40 mt-20 p-4'>
         <Items />
       </div>
 

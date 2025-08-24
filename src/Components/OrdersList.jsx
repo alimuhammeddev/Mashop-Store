@@ -33,7 +33,7 @@ const OrdersList = () => {
     <section className="container mx-auto">
       <Header />
 
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="p-4 lg:mt-40 md:mt-36 mt-16 lg:max-w-7xl mx-auto lg:p-0">
         <GobackButton />
         <h2 className="text-xl font-semibold my-4">Your Orders</h2>
 

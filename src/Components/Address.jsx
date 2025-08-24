@@ -27,7 +27,7 @@ const Address = () => {
   return (
     <section>
       <Header />
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="p-4 lg:mt-40 md:mt-36 mt-16 lg:max-w-7xl mx-auto lg:p-0">
         <GobackButton />
         <div className="mt-6 p-4 border rounded-lg shadow-md w-full max-w-lg mx-auto">
           <h2 className="text-lg font-semibold mb-4">Customer Address</h2>

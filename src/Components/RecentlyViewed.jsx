@@ -15,7 +15,7 @@ const RecentlyViewed = () => {
       <div>
         <Header />
       </div>
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="p-4 lg:mt-40 md:mt-36 mt-16 lg:max-w-7xl mx-auto lg:p-0">
         <GobackButton />
         <h2 className="text-xl font-semibold mt-4">Recently Viewed Products</h2>
         {recentProducts.length > 0 ? (

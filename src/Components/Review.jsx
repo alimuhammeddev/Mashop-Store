@@ -3,15 +3,15 @@ import GobackButton from "./GobackButton";
 
 const Review = () => {
   return (
-    <section>
+    <section className="lg:max-w-7xl mx-auto lg:p-0 p-4">
       <div>
         <Header />
       </div>
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="lg:mt-40 md:mt-36 mt-16">
         <GobackButton />
       </div>
 
-      <div className="p-4 space-y-3">
+      <div className="space-y-3">
         <h1 className="text-black text-xl font-semibold">
           Product Ratings and Review
         </h1>

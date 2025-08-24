@@ -18,7 +18,7 @@ const Inbox = () => {
       <div>
         <Header />
       </div>
-      <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+      <div className="p-4 lg:mt-40 md:mt-36 mt-16 lg:max-w-7xl mx-auto lg:p-0">
         <GobackButton />
         <h2 className="text-xl font-semibold mt-6">Inbox</h2>
         <div className="mt-4 bg-white shadow rounded-lg p-4">
