@@ -9,7 +9,7 @@ const ShoppingCart = () => {
             <Header />
         </div>
 
-        <div className="p-4 lg:mt-36 md:mt-36 mt-16">
+        <div className="lg:p-0 p-4 lg:mt-48 md:mt-36 mt-20 lg:max-w-7xl mx-auto">
             <Cart />
         </div>
 

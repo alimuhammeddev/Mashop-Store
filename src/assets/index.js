@@ -45,6 +45,7 @@ import zfold from './zfold.png';
 import rating1 from './rating1.png';
 import rating2 from './rating2.png';
 import rating3 from './rating3.png';
+import contact from './contact.jpg';
 
 export {
     hero,
@@ -94,4 +95,5 @@ export {
     rating1,
     rating2,
     rating3,
+    contact,
 }

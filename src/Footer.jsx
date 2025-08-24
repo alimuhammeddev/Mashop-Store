@@ -1,9 +1,10 @@
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white py-8 mt-5">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div className="max-w-7xl mx-auto lg:p-0 p-4 grid grid-cols-1 md:grid-cols-4 gap-8">
         <div>
           <h2 className="text-xl font-semibold mb-3">Mashop</h2>
           <p className="text-gray-400">
@@ -30,9 +31,9 @@ const Footer = () => {
               </a>
             </li>
             <li>
-              <a href="#" className="text-gray-400 hover:text-white">
+              <Link to="/contact-us" className="text-gray-400 hover:text-white">
                 Contact
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

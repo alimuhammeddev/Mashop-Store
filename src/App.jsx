@@ -19,6 +19,7 @@ import AccountSettings from "./Components/AccountSettings"
 import ScrollToTop from "./Components/ScrollToTop"
 import WishList from "./Pages/WishList"
 import { CartProvider } from "./context/CartContext"
+import Contact from "./Pages/Contact"
 
 const App = () => {
   return (
@@ -43,6 +44,7 @@ const App = () => {
         <Route path="/recently-viewed" element={<RecentlyViewed />} />
         <Route path="/account-settings" element={<AccountSettings />} />
         <Route path="/wishlist" element={<WishList />} />
+        <Route path="/contact-us" element={<Contact />} />
       </Routes>
     </CartProvider>
   )

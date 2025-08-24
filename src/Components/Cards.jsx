@@ -28,9 +28,9 @@ const Cards = () => {
   }, [isPaused, controls]);
 
   return (
-    <section className="overflow-hidden">
+    <section className="overflow-hidden lg:max-w-7xl lg:mx-auto">
       <div>
-        <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md">
+        <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md lg:mt-20">
           Our Latest Collections
         </h1>
         <h2 className="lg:text-xl font-medium text-center px-4 mt-2">

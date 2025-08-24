@@ -49,7 +49,7 @@ const Items = () => {
   const visibleItems = items.slice(0, visibleCount);
 
   return (
-    <section className="relative">
+    <section className="lg:max-w-7xl mx-auto">
       <div>
         <h1 className="text-center bg-orange-400 text-white w-fit mx-auto p-2 rounded-md">
           Our Product Categories
@@ -80,9 +80,9 @@ const Items = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1 gap-4 mt-5">
+      <div className="grid lg:grid-cols-4 md:grid-cols-2 grid-cols-2 gap-4 mt-5">
         {visibleItems.map((item) => (
-          <div key={item.id} className="w-[300px] lg:w-[350px] flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
+          <div key={item.id} className="flex-shrink-0 p-4 bg-white shadow-lg rounded-lg group">
             <div className="w-full h-48 relative overflow-hidden rounded-lg">
               <img src={item.img} alt={item.name} className="w-full h-full object-cover rounded-lg" />
 

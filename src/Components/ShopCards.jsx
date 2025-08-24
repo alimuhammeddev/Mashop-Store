@@ -85,7 +85,7 @@ const ShopCards = () => {
   const selectedProducts = productsData.slice(startIndex, startIndex + ITEMS_PER_PAGE);
 
   return (
-    <section className="max-w-7xl mx-auto lg:p-4 p-2">
+    <section className="max-w-7xl mx-auto lg:p-0 p-2">
       <div className="lg:flex items-center justify-between lg:flex-row flex-col">
         <h1 className="lg:text-xl font-medium">Shop on all kinds of products here</h1>
         <div className="flex items-center gap-2 cursor-pointer lg:mt-0 md:mt-0 mt-3">

@@ -11,7 +11,7 @@ export default function Header() {
 
   return (
     <header className="w-full bg-white shadow-md p-4 fixed top-0 left-0 z-50">
-      <div className="container mx-auto flex items-center justify-between">
+      <div className="container mx-auto flex items-center justify-between lg:max-w-7xl">
         <div className="text-2xl font-bold">Mashop</div>
 
         <div className="relative w-1/3 hidden md:block">

@@ -28,7 +28,7 @@ const Home = () => {
         </div>
       ) : (
         <>
-          <div className="relative p-4 lg:mt-36 md:mt-36 mt-16">
+          <div className="relative lg:p-0 p-4 lg:mt-40 md:mt-36 mt-16 lg:max-w-7xl mx-auto">
             <img src={hero} alt="" className="w-full" />
             <div className="absolute lg:top-36 md:top-16 top-6 lg:right-36 space-y-2 right-10">
               <h1 className="text-white text-lg font-medium lg:text-4xl">
